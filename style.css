@@ -1,0 +1,153 @@
+/* --- General Body Styles --- */
+body {
+    margin: 0;
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    background: linear-gradient(pink, #ffe6f0);
+}
+
+/* --- Header --- */
+h1 {
+    margin-top: 20px;
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
+    color: rgb(97, 0, 124);
+    text-shadow: 2px 2px 4px #ffb6c1; /* dreamy shadow effect */
+}
+
+/* --- Upload Section --- */
+.upload-section {
+    margin: 20px;
+}
+
+.upload-section input {
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid #ffc0cb;
+}
+
+.upload-section button {
+    padding: 5px 15px;
+    margin-left: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: hotpink;
+    color: white;
+    font-family: 'Pacifico', cursive;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-section button:hover {
+    background-color: deeppink;
+}
+
+/* --- Gallery --- */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px;
+}
+
+.gallery img {
+    width: 300px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* --- Popup Image --- */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 20px;
+}
+
+/* --- Letter Section --- */
+.letter-section {
+    margin: 30px;
+}
+
+.letter-section h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2em;
+    color: deeppink;
+    text-shadow: 1px 1px 2px #ffc0cb;
+}
+
+textarea {
+    width: 80%;
+    max-width: 500px;
+    height: 150px;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'Pacifico', cursive;
+    border: 1px solid #ffc0cb;
+    resize: none;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: hotpink;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Pacifico', cursive;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: deeppink;
+}
+
+/* --- Floating Hearts & Flowers Background --- */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* --- Mobile Responsive --- */
+@media screen and (max-width: 600px) {
+    .gallery img {
+        width: 90%;
+    }
+
+    textarea {
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .letter-section h2 {
+        font-size: 1.8em;
+    }
+}

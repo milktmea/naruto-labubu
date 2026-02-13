@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Naruto Labubu</title>
+    <!-- Google Font: Pacifico -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <div class="background"></div>
+
+    <h1>💖 Maxee and Bonjing throughout the years 💖</h1>
+
+    <div class="gallery" id="gallery">
+        <!-- Add your own photos here -->
+        <img src="IMG_0316.jpg" onclick="openImage(this)">
+        <img src="IMG_6572.jpg" onclick="openImage(this)">
+        <img src="IMG_9433.jpg" onclick="openImage(this)">
+        <img src="IMG_1869.jpg" onclick="openImage(this)">
+    </div>
+
+    <div id="popup" class="popup" onclick="closeImage()">
+        <img id="popup-img">
+    </div>
+
+    <div class="letter-section">
+        <h2> 💌</h2>
+        <textarea id="letterBox" placeholder="..."></textarea>
+        <button onclick="saveLetter()">Save Letter</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
