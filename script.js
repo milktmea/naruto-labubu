@@ -1,67 +1,97 @@
-// Photo popup
-function openImage(img) {
-    document.getElementById("popup").style.display = "flex";
-    document.getElementById("popup-img").src = img.src;
+// --------------------
+// PHOTO BROWSER
+// --------------------
+
+const photos = [
+    "itachi.jpeg",
+    "IMG_0316.jpg",
+    "IMG_6572.jpg",
+    "IMG_9433.jpg",
+    "IMG_1869.jpg"
+];
+
+let currentIndex = 0;
+const photoElement = document.getElementById("currentPhoto");
+
+function showPhoto(index) {
+    photoElement.style.opacity = 0;
+
+    setTimeout(() => {
+        photoElement.src = photos[index];
+        photoElement.style.opacity = 1;
+    }, 200);
 }
 
-function closeImage() {
-    document.getElementById("popup").style.display = "none";
+function nextPhoto() {
+    currentIndex = (currentIndex + 1) % photos.length;
+    showPhoto(currentIndex);
 }
 
-// Save letter
+function prevPhoto() {
+    currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+    showPhoto(currentIndex);
+}
+
+
+// --------------------
+// SAVE LETTER
+// --------------------
+
 function saveLetter() {
     const text = document.getElementById("letterBox").value;
     localStorage.setItem("savedLetter", text);
     alert("Letter Saved 💖");
 }
 
-// Load saved letter & create floating hearts + flowers
+
+// --------------------
+// LOAD SAVED LETTER + FLOATING HEARTS
+// --------------------
+
 window.onload = function() {
     const saved = localStorage.getItem("savedLetter");
     if (saved) {
         document.getElementById("letterBox").value = saved;
     }
-    createFloatingElements(30); // number of elements
+
+    createFloatingElements(35);
 };
 
-// Floating hearts and flowers
+
+// --------------------
+// FLOATING HEARTS & FLOWERS
+// --------------------
+
 function createFloatingElements(count) {
     const background = document.querySelector(".background");
-    const symbols = ["💖", "🌸", "💕", "🌺", "💗", "🌷", "💞"];
-    
+    const symbols = ["💖","🌸","💕","🌺","💗","🌷","💞"];
+
     for (let i = 0; i < count; i++) {
         const elem = document.createElement("div");
+
         elem.innerText = symbols[Math.floor(Math.random() * symbols.length)];
         elem.style.position = "absolute";
         elem.style.fontSize = `${Math.random() * 30 + 20}px`;
-        elem.style.left = `${Math.random() * 100}%`;
-        elem.style.top = `${Math.random() * 100}%`;
-        elem.style.opacity = Math.random();
+        elem.style.opacity = Math.random() * 0.6 + 0.3;
         elem.style.pointerEvents = "none";
-        background.appendChild(elem);
-        animateElement(elem);
-    }
-}
 
-function animateElement(elem) {
-    const speed = Math.random() * 0.5 + 0.2; // slower speed
-    let posY = Math.random() * window.innerHeight; // random start in pixels
-    let posX = Math.random() * window.innerWidth;
+        let posX = Math.random() * window.innerWidth;
+        let posY = Math.random() * document.body.scrollHeight;
+        const speed = Math.random() * 0.3 + 0.1;
 
-    elem.style.position = "absolute"; // fix to viewport
-    elem.style.top = posY + "px";
-    elem.style.left = posX + "px";
+        function float() {
+            posY -= speed;
 
-    function float() {
-        posY -= speed;
-        if (posY < -50) { // reset above screen
-            posY = window.innerHeight + 50;
-            posX = Math.random() * window.innerWidth;
-            elem.style.left = posX + "px";
+            if (posY < -50) {
+                posY = document.body.scrollHeight + 50;
+                posX = Math.random() * window.innerWidth;
+            }
+
+            elem.style.transform = `translate(${posX}px, ${posY}px)`;
+            requestAnimationFrame(float);
         }
-        elem.style.transform = `translate(${0}px, ${posY}px)`;
-        requestAnimationFrame(float);
-    }
-    float();
-}
 
+        float();
+        background.appendChild(elem);
+    }
+}
