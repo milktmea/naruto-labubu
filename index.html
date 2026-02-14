@@ -2,41 +2,37 @@
 <html>
 <head>
     <title>Naruto Labubu</title>
+
     <!-- Google Font: Pacifico -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
 
+    <!-- Floating Background -->
     <div class="background"></div>
 
     <h1>💖 Maxee and Bonjing throughout the years 💖</h1>
 
-    <div class="gallery" id="gallery">
-        <!-- Add your own photos here -->
-        <img src="itachi.jpeg" onclick="openImage(this)">
-        <img src="IMG_0316.jpg" onclick="openImage(this)">
-        <img src="IMG_6572.jpg" onclick="openImage(this)">
-        <img src="IMG_9433.jpg" onclick="openImage(this)">
-        <img src="IMG_1869.jpg" onclick="openImage(this)">
+    <!-- PHOTO BROWSER -->
+    <div class="photo-browser">
+        <button class="nav-btn" onclick="prevPhoto()">❮</button>
+        <img id="currentPhoto" src="itachi.jpeg" alt="Photo">
+        <button class="nav-btn" onclick="nextPhoto()">❯</button>
     </div>
 
-    <div id="popup" class="popup" onclick="closeImage()">
-        <img id="popup-img">
-    </div>
-
+    <!-- LETTER SECTION -->
     <div class="letter-section">
-        <h2> 💌</h2>
-        <textarea id="letterBox" placeholder="To my ever beautiful and thicc but the most cutiepatootie girlfriend, Maxee. We may be separated by the miles between us but our love and connection will always be with me. I love you and excited to see you soon. 
-            Happy Valentines my beb maxee"></textarea>
-        <button onclick="saveLetter()">Reply to this Letter?</button>
+        <h2>💌 A Letter 💌</h2>
+
+        <textarea id="letterBox"
+        placeholder="Write your reply here..."></textarea>
+
+        <button onclick="saveLetter()">Save Letter 💖</button>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
